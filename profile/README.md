@@ -2,8 +2,8 @@
   <img src="logo.svg" alt="Logo Coordinación Tecnológica" height="90" />
 </p>
 
-# Coordinación Tecnológica — Secretaría de Salud
-### Municipalidad de Córdoba
+# Coordinación Tecnológica
+### Secretaría de Salud - Municipalidad de Córdoba
 
 Somos el área de tecnología de la **Secretaría de Salud de la Municipalidad de Córdoba**, responsable del diseño, desarrollo y mantenimiento de los sistemas de información que sostienen la gestión sanitaria municipal.
 
