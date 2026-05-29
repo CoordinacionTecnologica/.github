@@ -18,13 +18,16 @@ Desarrollamos soluciones digitales orientadas a mejorar la atención ciudadana y
 - Integraciones con sistemas provinciales y nacionales de salud
 - Plataformas de soporte a equipos de salud en territorio
 
+## Integraciones
+Nos integramos a diferentes servicios externos, mayormente por protocolo API-REST, incluyendo:
+- RENAPER - Registro Nacional de las Personas
+- PUCO - Padrón Único Consolidado Operativo
+
 ## Nuestro enfoque
 
 Trabajamos con tecnologías modernas y criterios de software libre siempre que es posible, priorizando la soberanía de los datos y la continuidad de los servicios. Apostamos por soluciones mantenibles, documentadas y auditables.
 
-## Contacto
 
-Para consultas institucionales o técnicas, comunicarse con la Secretaría de Salud de la Municipalidad de Córdoba.
 
 ---
 
