@@ -18,16 +18,31 @@ Desarrollamos soluciones digitales orientadas a mejorar la atención ciudadana y
 - Integraciones con sistemas provinciales y nacionales de salud
 - Plataformas de soporte a equipos de salud en territorio
 
+## Stack tecnológico
+
+| Capa | Tecnología |
+|------|-----------|
+| Frontend | React 19 + Vite 6 |
+| Base de datos | SQL Server / PostgreSQL |
+| Autenticación | JWT (token via hash en URL) |
+| Estilos | CSS puro con variables (dark mode nativo) |
+| Iconos | FontAwesome |
+| Alertas | SweetAlert2 |
+
 ## Integraciones
-Nos integramos a diferentes servicios externos, mayormente por protocolo API-REST, incluyendo:
-- RENAPER - Registro Nacional de las Personas
-- PUCO - Padrón Único Consolidado Operativo
+
+Nos integramos a servicios externos vía API-REST:
+
+- **RENAPER** — Registro Nacional de las Personas
+- **PUCO** — Padrón Único Consolidado Operativo
 
 ## Nuestro enfoque
 
-Trabajamos con tecnologías modernas y criterios de software libre siempre que es posible, priorizando la soberanía de los datos y la continuidad de los servicios. Apostamos por soluciones mantenibles, documentadas y auditables.
-
-
+- **Una plantilla, todas las apps** — todas las aplicaciones internas parten del mismo [template](https://github.com/CoordinacionTecnologica/template), con autenticación JWT, layout con sidebar/navbar y control de acceso por roles ya resuelto.
+- **Roles en un solo lugar** — los roles y rutas visibles para cada perfil de usuario se definen en `ChildButtonService.js`, sin lógica dispersa por el código.
+- **Auth centralizada** — el token JWT llega desde el portal/landing vía hash en la URL. Los roles se leen de `user_configs[].rol` dentro del payload.
+- **Datos bajo nuestro control** — priorizamos infraestructura propia y evitamos dependencias externas innecesarias.
+- **Código mantenible** — apostamos por soluciones documentadas, auditables y fáciles de traspasar entre miembros del equipo.
 
 ---
 
