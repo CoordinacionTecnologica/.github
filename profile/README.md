@@ -28,6 +28,7 @@ Desarrollamos soluciones digitales orientadas a mejorar la atención ciudadana y
 | Estilos | CSS puro con variables (dark mode nativo) |
 | Iconos | FontAwesome |
 | Alertas | SweetAlert2 |
+| Tablas | DataTables |
 
 ## Integraciones
 
