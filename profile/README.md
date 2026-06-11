@@ -31,4 +31,83 @@ Trabajamos con tecnologías modernas y criterios de software libre siempre que e
 
 ---
 
+## ¿Cómo arranco un nuevo proyecto?
+
+Usamos una plantilla base para todas las apps internas. Cloná el repositorio [template](https://github.com/CoordinacionTecnologica/template) y seguí estos pasos:
+
+### 1 · Clonar y configurar el nombre
+
+```bash
+git clone https://github.com/CoordinacionTecnologica/template.git mi-nuevo-proyecto
+cd mi-nuevo-proyecto
+```
+
+Cambiá el `name` en `package.json` al nombre del proyecto.
+
+### 2 · Agregar las pestañas del menú
+
+Todo el sistema de rutas, roles y pestañas de la sidebar se define en un solo lugar:
+
+**`src/services/ChildButtonService.js`**
+
+```js
+export const childButtons = [
+  {
+    route: '/mi-ruta',
+    label: 'Nombre en el menú',
+    roles: ['admin', 'superAdmin'],  // quién puede verla
+    icon: 'faPlus'                   // icono de FontAwesome
+  }
+];
+```
+
+Cada entrada en este array genera automáticamente una pestaña en la sidebar visible solo para los roles indicados.
+
+### 3 · Registrar la ruta en App.jsx
+
+```jsx
+<Route
+  path="/mi-ruta"
+  element={<PrivateRoute element={<MiComponente />} path="/mi-ruta" />}
+/>
+```
+
+La ruta en `App.jsx`, en `PrivateRoute` y en `ChildButtonService.js` deben coincidir exactamente.
+
+### 4 · Configurar variables de entorno
+
+Crear `.env.development` y `.env.production` con:
+
+```env
+VITE_LOGIN_URL=https://...
+VITE_LANDING_PAGE_URL=https://...
+VITE_NOT_ACCESS_RESOURCE=https://...
+VITE_DISABLE_AUTH=true          # solo en desarrollo
+```
+
+### 5 · Configurar el basename (importante para producción)
+
+Si la app se despliega bajo una subruta (`/mi-app/`), configurar en **dos lugares**:
+
+**`src/main.jsx`**
+```jsx
+<BrowserRouter basename="/mi-app">
+```
+
+**`vite.config.js`**
+```js
+export default defineConfig({
+  base: '/mi-app/',
+  // ...
+})
+```
+
+Si la app corre en la raíz del dominio, omitir este paso.
+
+---
+
+> Para más detalle sobre la arquitectura del template (autenticación JWT, roles, dark mode, navbar configurable) ver el `CLAUDE.md` del repositorio [template](https://github.com/CoordinacionTecnologica/template).
+
+---
+
 <sub>Municipalidad de Córdoba · Secretaría de Salud · Coordinación Tecnológica</sub>
