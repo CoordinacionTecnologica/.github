@@ -127,3 +127,134 @@ Si la app corre en la raíz del dominio, omitir este paso.
 ---
 
 <sub>Municipalidad de Córdoba · Secretaría de Salud · Coordinación Tecnológica</sub>
+
+---
+
+## ¿Cómo hago CICD?
+
+[CICD.txt](https://github.com/user-attachments/files/29296131/CICD.txt)
+
+
+
+ir a GitHub
+settings>accions>runners>new self-hosted runner
+Windows x64
+
+--------------------------------------------------------------------------------
+CREAR CARPETA DONDE ALOJAR RUNNER DE MI PROYECTO
+C:\Users\martinf\Desktop\actionsRunner
+crear carpeta accionRECETAS
+cd accionRECETAS
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+ENTRAR A POWERSHELL
+
+MOVERME A CARPETA DONDE INSTALAR RUNNNERS
+cd C:\Users\martinf\Desktop\actionsRunner\runnerABM
+-------------------------------------------------------------------------------
+EMPEZAR A TIRAR COMANDOS POWERSHELL
+
+// crea carpeta y se mueve dentro
+mkdir actions-runner; cd actions-runner
+
+
+//descarga zip de runner
+Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.334.0/actions-runner-win-x64-2.334.0.zip -OutFile actions-runner-win-x64-2.334.0.zip
+
+
+//extrtaer e instalar
+Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD/actions-runner-win-x64-2.334.0.zip", "$PWD")
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+configurar
+
+
+entrar a cmd con permisos de administrador
+
+config.cmd --url https://github.com/xxx/xxx --token xxxxxxxxxxxxxxx --runasservice --windowslogonaccount "martinf" --windowslogonpassword "xxxxxxxx"
+
+
+DESPES DE ESTE COMANDO SE ABRE PARA CONFIGFURAR
+
+--------------------------------------------------------------------------------
+|        ____ _ _   _   _       _          _        _   _                      |
+|       / ___(_) |_| | | |_   _| |__      / \   ___| |_(_) ___  _ __  ___      |
+|      | |  _| | __| |_| | | | | '_ \    / _ \ / __| __| |/ _ \| '_ \/ __|     |
+|      | |_| | | |_|  _  | |_| | |_) |  / ___ \ (__| |_| | (_) | | | \__ \     |
+|       \____|_|\__|_| |_|\__,_|_.__/  /_/   \_\___|\__|_|\___/|_| |_|___/     |
+|                                                                              |
+|                       Self-hosted runner registration                        |
+|                                                                              |
+--------------------------------------------------------------------------------
+
+CONFIGURAR 
+
+1
+Un Runner Group es una agrupación lógica de runners.
+Si no configuraste ninguno en GitHub:
+ENTER
+
+2
+Nombre del runner
+runnerRECETAS
+
+3
+enter
+
+4 
+enter
+
+
+
+
+
+## ¿Cómo agrego un usuario y selecciono la reparticion?
+
+---------------------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////
+IMPORTANTE
+
+en aws no tocar código
+siempre clonar, cambiar y pushear 
+si se pushea a rama maion se hace el CICD
+si algo esta mal o error de mime, hace rollback
+///////////////////////////////////////////////////////////////////////////
+---------------------------------------------------------------------------
+
+
+
+///////////////////////////////////////////////////////////////////////////
+CUANDO SE CREA UN ROL NUEVO
+ir al front landign
+
+agregarlo en src/services/RoutesAvailable.js
+en la etiqueta 
+route: '/landing'
+
+queda tocar el back
+///////////////////////////////////////////////////////////////////////////
+CUANDO EL ROL DEBE DE PODE ASOCIARLO A UNA REPARTICION
+
+ir al front landign
+agregar el rol en "RoutesAvailable.js"
+
+
+agregar la configuración en "AsociationService.jsx"
+
+            'recetasUser-DispensAR': {
+                endpoint: `${this.baseUrlApiAcces}/reparticiones`,
+                label: 'Reparticiones',
+                associationEndpoint: `${this.baseUrlApiAcces}/asociacionUsuario`,
+                fieldName: 'id_reparticion',
+                requiresRole: true,
+                system: 'DispensAR',
+                isMulti: true
+            },
+
+hay que tocar la apiacces, agregar el rol en Access/userasociation/idUser
+///////////////////////////////////////////////////////////////////////////
+[ROLES.txt](https://github.com/user-attachments/files/29296143/ROLES.txt)
+
