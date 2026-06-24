@@ -126,7 +126,7 @@ Si la app corre en la raíz del dominio, omitir este paso.
 
 ---
 
-<sub>Municipalidad de Córdoba · Secretaría de Salud · Coordinación Tecnológica</sub>
+<sub>EXTRAS</sub>
 
 ---
 
@@ -137,3 +137,8 @@ Si la app corre en la raíz del dominio, omitir este paso.
 ## ¿Cómo agrego un usuario y selecciono la reparticion?
 [ROLES.txt](https://github.com/user-attachments/files/29296143/ROLES.txt)
 
+---
+
+<sub>Municipalidad de Córdoba · Secretaría de Salud · Coordinación Tecnológica</sub>
+
+---
